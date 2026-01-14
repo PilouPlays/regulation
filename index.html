@@ -78,7 +78,17 @@ function autoExport(){
   URL.revokeObjectURL(a.href);
 }
 
-function exportFile(){  }
+function exportFile(){
+  const data = { arrets, lignes };
+  const blob = new Blob([JSON.stringify(data,null,2)], {type:'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'bus_data.json';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(a.href);
+}
 
 function importFile(e){
   const file = e.target.files[0];
