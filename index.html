@@ -65,17 +65,6 @@ let lignes = JSON.parse(localStorage.getItem('lignes')) || [];
 function save(){
   localStorage.setItem('arrets',JSON.stringify(arrets));
   localStorage.setItem('lignes',JSON.stringify(lignes));
-  
-}
-
-function autoExport(){
-  const data = { arrets, lignes };
-  const blob = new Blob([JSON.stringify(data,null,2)], {type:'application/json'});
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = 'bus_data.json';
-  a.click();
-  URL.revokeObjectURL(a.href);
 }
 
 function exportFile(){
@@ -126,6 +115,15 @@ function deleteArret(i){
   save(); render();
 }
 
+function renameArret(i){
+  const nouveau = prompt("Nouveau nom de l'arrêt :", arrets[i]);
+  if(!nouveau) return;
+  const ancien = arrets[i];
+  arrets[i] = nouveau;
+  lignes.forEach(l => l.arrets.forEach(a => { if(a.nom === ancien) a.nom = nouveau; }));
+  save(); render();
+}
+
 function addLigne(){
   const nom=document.getElementById('nomLigne').value.trim();
   if(!nom) return;
@@ -143,11 +141,18 @@ function deleteLigne(i){
   save(); render();
 }
 
+function renameLigne(i){
+  const nouveau = prompt("Nouveau nom de la ligne :", lignes[i].nom);
+  if(!nouveau) return;
+  lignes[i].nom = nouveau;
+  save(); render();
+}
+
 function render(){
   const ul=document.getElementById('listeArrets'); ul.innerHTML='';
   arrets.forEach((a,i)=>{
     const li=document.createElement('li');
-    li.innerHTML=`${a} <button class='delete' onclick='deleteArret(${i})'>×</button>`;
+    li.innerHTML = `${a} <div><button onclick='renameArret(${i})'>Renommer</button> <button class='delete' onclick='deleteArret(${i})'>×</button></div>`;
     ul.appendChild(li);
   });
 
@@ -167,8 +172,8 @@ function render(){
   const ll=document.getElementById('listeLignes'); ll.innerHTML='<h3>Lignes créées</h3>';
   lignes.forEach((l,i)=>{
     const d=document.createElement('div'); d.className='card';
-    d.innerHTML=`<div><b>${l.nom}</b><br>${l.arrets.map(a=>a.nom+'('+a.type+')').join(' → ')}</div>
-    <button class='delete' onclick='deleteLigne(${i})'>×</button>`;
+    d.innerHTML = `<div><b>${l.nom}</b><br>${l.arrets.map(a=>a.nom+'('+a.type+')').join(' → ')}</div>
+    <div><button onclick='renameLigne(${i})'>Renommer</button> <button class='delete' onclick='deleteLigne(${i})'>×</button></div>`;
     ll.appendChild(d);
   });
 
