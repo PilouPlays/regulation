@@ -18,6 +18,7 @@
     .delete { background:#e53935; color:white; border:none; border-radius:50%; width:25px; height:25px; cursor:pointer; }
     .delete:hover { background:#c62828; }
     .card { background:white; padding:10px; margin:10px 0; border-radius:10px; box-shadow:0 2px 5px rgba(0,0,0,0.1); display:flex; justify-content:space-between; align-items:center; }
+    .topbar { margin:10px 0; background:#fff; padding:10px; border-radius:10px; }
   </style>
 </head>
 <body>
@@ -28,6 +29,12 @@
   <button onclick="showPage('regulation')">Régulation</button>
 </nav>
 <div class="container">
+
+<div class="topbar">
+  <b>Fichier de données :</b>
+  <button onclick="exportFile()">Télécharger les données</button>
+  <input type="file" id="fileInput" accept=".json" onchange="importFile(event)" />
+</div>
 
 <div id="arrets" class="page active">
   <h2>Créer des arrêts</h2>
@@ -58,6 +65,34 @@ let lignes = JSON.parse(localStorage.getItem('lignes')) || [];
 function save(){
   localStorage.setItem('arrets',JSON.stringify(arrets));
   localStorage.setItem('lignes',JSON.stringify(lignes));
+  autoExport();
+}
+
+function autoExport(){
+  const data = { arrets, lignes };
+  const blob = new Blob([JSON.stringify(data,null,2)], {type:'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'bus_data.json';
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+function exportFile(){ autoExport(); }
+
+function importFile(e){
+  const file = e.target.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    try{
+      const data = JSON.parse(ev.target.result);
+      arrets = data.arrets || [];
+      lignes = data.lignes || [];
+      save(); render();
+    }catch(err){ alert('Fichier invalide'); }
+  };
+  reader.readAsText(file);
 }
 
 function showPage(id){
@@ -111,7 +146,7 @@ function render(){
   arrets.forEach(a=>{
     const d=document.createElement('div');
     d.innerHTML=`<input type='checkbox' class='chkArret' value='${a}' data-type='normal'> ${a}
-    <select onchange="this.previousElementSibling.dataset.type=this.value">
+    <select onchange=\"this.previousElementSibling.dataset.type=this.value\">
       <option value='normal'>Arrêt</option>
       <option value='depart'>Départ</option>
       <option value='terminus'>Terminus</option>
@@ -130,7 +165,7 @@ function render(){
   const ra=document.getElementById('regArrets'); ra.innerHTML='';
   arrets.forEach(a=>{
     const li=document.createElement('li');
-    li.innerHTML=`<button onclick="showLinesAt('${a}')">${a}</button>`;
+    li.innerHTML=`<button onclick=\"showLinesAt('${a}')\">${a}</button>`;
     ra.appendChild(li);
   });
 }
