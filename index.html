@@ -4,116 +4,130 @@
   <meta charset="UTF-8" />
   <title>Gestion des lignes de bus</title>
   <style>
-    body { font-family: Arial, sans-serif; margin: 20px; }
-    nav button { margin-right: 10px; }
-    .page { display: none; }
-    .page.active { display: block; }
-    input, select, button { margin: 5px 0; padding: 5px; }
-    ul { padding-left: 20px; }
-    .card { border: 1px solid #ccc; padding: 10px; margin: 10px 0; border-radius: 8px; }
+    body { font-family: Arial, sans-serif; margin: 0; background:#f4f6f8; }
+    header { background:#1e88e5; color:white; padding:15px; font-size:22px; }
+    nav { background:#1565c0; padding:10px; }
+    nav button { background:white; border:none; border-radius:20px; padding:8px 15px; margin-right:10px; cursor:pointer; }
+    nav button:hover { background:#e3f2fd; }
+    .container { padding:20px; }
+    .page { display:none; }
+    .page.active { display:block; }
+    input, select, button { padding:6px; margin:5px 0; }
+    ul { list-style:none; padding:0; }
+    li { background:white; margin:5px 0; padding:8px; border-radius:8px; display:flex; justify-content:space-between; align-items:center; }
+    .delete { background:#e53935; color:white; border:none; border-radius:50%; width:25px; height:25px; cursor:pointer; }
+    .delete:hover { background:#c62828; }
+    .card { background:white; padding:10px; margin:10px 0; border-radius:10px; box-shadow:0 2px 5px rgba(0,0,0,0.1); display:flex; justify-content:space-between; align-items:center; }
   </style>
 </head>
 <body>
-  <h1>Gestion des lignes de bus</h1>
-  <nav>
-    <button onclick="showPage('arrets')">Arrêts</button>
-    <button onclick="showPage('lignes')">Lignes</button>
-    <button onclick="showPage('regulation')">Régulation</button>
-  </nav>
+<header>Gestion des lignes de bus</header>
+<nav>
+  <button onclick="showPage('arrets')">Arrêts</button>
+  <button onclick="showPage('lignes')">Lignes</button>
+  <button onclick="showPage('regulation')">Régulation</button>
+</nav>
+<div class="container">
 
-  <!-- Page Arrêts -->
-  <div id="arrets" class="page active">
-    <h2>Créer des arrêts</h2>
-    <input id="nomArret" placeholder="Nom de l'arrêt (ex: Monument)" />
-    <button onclick="addArret()">+</button>
-    <ul id="listeArrets"></ul>
-  </div>
+<div id="arrets" class="page active">
+  <h2>Créer des arrêts</h2>
+  <input id="nomArret" placeholder="Nom de l'arrêt" />
+  <button onclick="addArret()">Ajouter</button>
+  <ul id="listeArrets"></ul>
+</div>
 
-  <!-- Page Lignes -->
-  <div id="lignes" class="page">
-    <h2>Créer une ligne</h2>
-    <input id="nomLigne" placeholder="Nom de ligne (ex: L1C)" />
-    <div id="selectArrets"></div>
-    <button onclick="addLigne()">Créer la ligne</button>
-    <div id="listeLignes"></div>
-  </div>
+<div id="lignes" class="page">
+  <h2>Créer une ligne</h2>
+  <input id="nomLigne" placeholder="Nom de ligne" />
+  <div id="selectArrets"></div>
+  <button onclick="addLigne()">Créer la ligne</button>
+  <div id="listeLignes"></div>
+</div>
 
-  <!-- Page Régulation -->
-  <div id="regulation" class="page">
-    <h2>Régulation</h2>
-    <p>Clique sur un arrêt :</p>
-    <ul id="regArrets"></ul>
-    <div id="resultReg"></div>
-  </div>
+<div id="regulation" class="page">
+  <h2>Régulation</h2>
+  <ul id="regArrets"></ul>
+  <div id="resultReg"></div>
+</div>
+</div>
 
 <script>
 let arrets = JSON.parse(localStorage.getItem('arrets')) || [];
 let lignes = JSON.parse(localStorage.getItem('lignes')) || [];
 
-function save() {
-  localStorage.setItem('arrets', JSON.stringify(arrets));
-  localStorage.setItem('lignes', JSON.stringify(lignes));
+function save(){
+  localStorage.setItem('arrets',JSON.stringify(arrets));
+  localStorage.setItem('lignes',JSON.stringify(lignes));
 }
 
-function showPage(id) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   render();
 }
 
-function addArret() {
-  const nom = document.getElementById('nomArret').value.trim();
-  if (!nom) return;
+function addArret(){
+  const nom=document.getElementById('nomArret').value.trim();
+  if(!nom) return;
   arrets.push(nom);
-  document.getElementById('nomArret').value = '';
+  document.getElementById('nomArret').value='';
   save(); render();
 }
 
-function addLigne() {
-  const nom = document.getElementById('nomLigne').value.trim();
-  if (!nom) return;
-  const selected = [];
-  document.querySelectorAll('.chkArret').forEach(chk => {
-    if (chk.checked) selected.push({ nom: chk.value, type: chk.dataset.type });
-  });
-  lignes.push({ nom, arrets: selected });
-  document.getElementById('nomLigne').value = '';
+function deleteArret(i){
+  const nom=arrets[i];
+  arrets.splice(i,1);
+  lignes.forEach(l=>l.arrets=l.arrets.filter(a=>a.nom!==nom));
   save(); render();
 }
 
-function render() {
-  // Arrêts
-  const ul = document.getElementById('listeArrets');
-  ul.innerHTML = '';
-  arrets.forEach(a => { const li = document.createElement('li'); li.textContent = a; ul.appendChild(li); });
+function addLigne(){
+  const nom=document.getElementById('nomLigne').value.trim();
+  if(!nom) return;
+  const selected=[];
+  document.querySelectorAll('.chkArret').forEach(chk=>{
+    if(chk.checked) selected.push({nom:chk.value,type:chk.dataset.type});
+  });
+  lignes.push({nom,arrets:selected});
+  document.getElementById('nomLigne').value='';
+  save(); render();
+}
 
-  // Sélection arrêts pour lignes
-  const sel = document.getElementById('selectArrets');
-  sel.innerHTML = '<h3>Choisir les arrêts</h3>';
-  arrets.forEach(a => {
-    const div = document.createElement('div');
-    div.innerHTML = `
-      <input type='checkbox' class='chkArret' value='${a}' data-type='normal'> ${a}
-      <select onchange="this.previousElementSibling.dataset.type=this.value">
-        <option value='normal'>Arrêt</option>
-        <option value='depart'>Départ</option>
-        <option value='terminus'>Terminus</option>
-      </select>`;
-    sel.appendChild(div);
+function deleteLigne(i){
+  lignes.splice(i,1);
+  save(); render();
+}
+
+function render(){
+  const ul=document.getElementById('listeArrets'); ul.innerHTML='';
+  arrets.forEach((a,i)=>{
+    const li=document.createElement('li');
+    li.innerHTML=`${a} <button class='delete' onclick='deleteArret(${i})'>×</button>`;
+    ul.appendChild(li);
   });
 
-  // Liste lignes
-  const ll = document.getElementById('listeLignes');
-  ll.innerHTML = '<h3>Lignes créées</h3>';
-  lignes.forEach(l => {
-    const d = document.createElement('div'); d.className='card';
-    d.innerHTML = `<b>${l.nom}</b><br>` + l.arrets.map(a => `${a.nom} (${a.type})`).join(' → ');
+  const sel=document.getElementById('selectArrets');
+  sel.innerHTML='<h3>Choisir les arrêts</h3>';
+  arrets.forEach(a=>{
+    const d=document.createElement('div');
+    d.innerHTML=`<input type='checkbox' class='chkArret' value='${a}' data-type='normal'> ${a}
+    <select onchange="this.previousElementSibling.dataset.type=this.value">
+      <option value='normal'>Arrêt</option>
+      <option value='depart'>Départ</option>
+      <option value='terminus'>Terminus</option>
+    </select>`;
+    sel.appendChild(d);
+  });
+
+  const ll=document.getElementById('listeLignes'); ll.innerHTML='<h3>Lignes créées</h3>';
+  lignes.forEach((l,i)=>{
+    const d=document.createElement('div'); d.className='card';
+    d.innerHTML=`<div><b>${l.nom}</b><br>${l.arrets.map(a=>a.nom+'('+a.type+')').join(' → ')}</div>
+    <button class='delete' onclick='deleteLigne(${i})'>×</button>`;
     ll.appendChild(d);
   });
 
-  // Régulation
-  const ra = document.getElementById('regArrets');
-  ra.innerHTML='';
+  const ra=document.getElementById('regArrets'); ra.innerHTML='';
   arrets.forEach(a=>{
     const li=document.createElement('li');
     li.innerHTML=`<button onclick="showLinesAt('${a}')">${a}</button>`;
@@ -121,11 +135,10 @@ function render() {
   });
 }
 
-function showLinesAt(arret) {
+function showLinesAt(arret){
   const div=document.getElementById('resultReg');
   const res=lignes.filter(l=>l.arrets.some(a=>a.nom===arret));
-  div.innerHTML = `<h3>Lignes qui passent à ${arret}</h3>` +
-    (res.length? '<ul>'+res.map(l=>`<li>${l.nom}</li>`).join('')+'</ul>' : 'Aucune ligne');
+  div.innerHTML=`<h3>Lignes à ${arret}</h3>`+(res.length?'<ul>'+res.map(l=>`<li>${l.nom}</li>`).join('')+'</ul>':'Aucune ligne');
 }
 
 render();
