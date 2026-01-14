@@ -65,7 +65,7 @@ let lignes = JSON.parse(localStorage.getItem('lignes')) || [];
 function save(){
   localStorage.setItem('arrets',JSON.stringify(arrets));
   localStorage.setItem('lignes',JSON.stringify(lignes));
-  autoExport();
+  
 }
 
 function autoExport(){
@@ -78,7 +78,7 @@ function autoExport(){
   URL.revokeObjectURL(a.href);
 }
 
-function exportFile(){ autoExport(); }
+function exportFile(){  }
 
 function importFile(e){
   const file = e.target.files[0];
