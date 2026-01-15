@@ -39,6 +39,7 @@
   <b>Fichier de données :</b>
   <button onclick="exportFile()">Télécharger les données</button>
   <input type="file" id="fileInput" accept=".json" onchange="importFile(event)" />
+  <span id="statusSync" style="margin-left:10px;color:#2e7d32;"></span>
 </div>
 
 <div id="arrets" class="page">
@@ -98,6 +99,15 @@ function save(){
   localStorage.setItem('lignes',JSON.stringify(lignes));
 }
 
+function sync(){
+  save();
+  const s = document.getElementById('statusSync');
+  if(s){
+    const d = new Date();
+    s.textContent = 'Données mises à jour à ' + d.toLocaleTimeString();
+  }
+}
+
 function exportFile(){
   const data = { arrets, lignes };
   const blob = new Blob([JSON.stringify(data,null,2)], {type:'application/json'});
@@ -115,19 +125,19 @@ function importFile(e){
   if(!file) return;
   const reader = new FileReader();
   reader.onload = ev => {
-    try{ const data = JSON.parse(ev.target.result); arrets = data.arrets || []; lignes = data.lignes || []; save(); render(); }
+    try{ const data = JSON.parse(ev.target.result); arrets = data.arrets || []; lignes = data.lignes || []; sync(); render(); }
     catch(err){ alert('Fichier invalide'); }
   };
   reader.readAsText(file);
 }
 
-function addArret(){ if(!isLogged) return; const nom=document.getElementById('nomArret').value.trim(); if(!nom) return; arrets.push(nom); document.getElementById('nomArret').value=''; save(); render(); }
-function deleteArret(i){ if(!isLogged) return; const nom=arrets[i]; arrets.splice(i,1); lignes.forEach(l=>l.arrets=l.arrets.filter(a=>a.nom!==nom)); save(); render(); }
-function renameArret(i){ if(!isLogged) return; const nouveau = prompt("Nouveau nom de l'arrêt :", arrets[i]); if(!nouveau) return; const ancien = arrets[i]; arrets[i] = nouveau; lignes.forEach(l => l.arrets.forEach(a => { if(a.nom === ancien) a.nom = nouveau; })); save(); render(); }
+function addArret(){ if(!isLogged) return; const nom=document.getElementById('nomArret').value.trim(); if(!nom) return; arrets.push(nom); document.getElementById('nomArret').value=''; sync(); render(); }
+function deleteArret(i){ if(!isLogged) return; const nom=arrets[i]; arrets.splice(i,1); lignes.forEach(l=>l.arrets=l.arrets.filter(a=>a.nom!==nom)); sync(); render(); }
+function renameArret(i){ if(!isLogged) return; const nouveau = prompt("Nouveau nom de l'arrêt :", arrets[i]); if(!nouveau) return; const ancien = arrets[i]; arrets[i] = nouveau; lignes.forEach(l => l.arrets.forEach(a => { if(a.nom === ancien) a.nom = nouveau; })); sync(); render(); }
 
-function addLigne(){ if(!isLogged) return; const nom=document.getElementById('nomLigne').value.trim(); if(!nom) return; const selected=[]; document.querySelectorAll('.chkArret').forEach(chk=>{ if(chk.checked) selected.push({nom:chk.value,type:chk.dataset.type}); }); lignes.push({nom,arrets:selected}); document.getElementById('nomLigne').value=''; save(); render(); }
-function deleteLigne(i){ if(!isLogged) return; lignes.splice(i,1); save(); render(); }
-function renameLigne(i){ if(!isLogged) return; const nouveau = prompt("Nouveau nom de la ligne :", lignes[i].nom); if(!nouveau) return; lignes[i].nom = nouveau; save(); render(); }
+function addLigne(){ if(!isLogged) return; const nom=document.getElementById('nomLigne').value.trim(); if(!nom) return; const selected=[]; document.querySelectorAll('.chkArret').forEach(chk=>{ if(chk.checked) selected.push({nom:chk.value,type:chk.dataset.type}); }); lignes.push({nom,arrets:selected}); document.getElementById('nomLigne').value=''; sync(); render(); }
+function deleteLigne(i){ if(!isLogged) return; lignes.splice(i,1); sync(); render(); }
+function renameLigne(i){ if(!isLogged) return; const nouveau = prompt("Nouveau nom de la ligne :", lignes[i].nom); if(!nouveau) return; lignes[i].nom = nouveau; sync(); render(); }
 
 function render(){
   const ul=document.getElementById('listeArrets'); ul.innerHTML='';
