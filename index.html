@@ -59,10 +59,26 @@
 </div>
 
 <script>
-let arrets = JSON.parse(localStorage.getItem('arrets')) || [];
-let lignes = JSON.parse(localStorage.getItem('lignes')) || [];
+let arrets = [];
+let lignes = [];
+
+// Charger les données communes depuis GitHub (bus_data.json)
+fetch("bus_data.json")
+  .then(r => r.json())
+  .then(data => {
+    arrets = data.arrets || [];
+    lignes = data.lignes || [];
+    render();
+  })
+  .catch(() => {
+    // Si le fichier n'existe pas encore
+    arrets = [];
+    lignes = [];
+    render();
+  });
 
 function save(){
+  // Sauvegarde locale seulement (pour toi)
   localStorage.setItem('arrets',JSON.stringify(arrets));
   localStorage.setItem('lignes',JSON.stringify(lignes));
 }
@@ -191,7 +207,6 @@ function showLinesAt(arret){
   div.innerHTML=`<h3>Lignes à ${arret}</h3>`+(res.length?'<ul>'+res.map(l=>`<li>${l.nom}</li>`).join('')+'</ul>':'Aucune ligne');
 }
 
-render();
 </script>
 </body>
 </html>
