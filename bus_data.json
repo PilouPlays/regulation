@@ -1,0 +1,1531 @@
+{
+  "arrets": [
+    "Cimetière V.Hugo",
+    "Collège George Sand",
+    "Général De Gaulle",
+    "CHU de LILLE",
+    "Hôtel de Police",
+    "Monument",
+    "Valiglou",
+    "Hôtel de Ville",
+    "Gendarmerie",
+    "Fenelon",
+    "Bois Sucré",
+    "Opéra",
+    "Salle des Fêtes",
+    "Simon Veil",
+    "Route de la Citadelle",
+    "Pont de Drilly",
+    "Rigault",
+    "Pôle d'échange",
+    "Gare Routière",
+    "Place Rihour",
+    "Palais de Justice",
+    "Palais de Justice - Tramway",
+    "Rima HASSAN - Tramway",
+    "Galerie des Glaces",
+    "4 Pavés",
+    "Martigue",
+    "La Maladière",
+    "Stade CDG",
+    "Gendarmerie"
+  ],
+  "lignes": [
+    {
+      "nom": "L1G",
+      "arrets": [
+        {
+          "nom": "Cimetière V.Hugo",
+          "type": "depart"
+        },
+        {
+          "nom": "Collège George Sand",
+          "type": "normal"
+        },
+        {
+          "nom": "Hôtel de Police",
+          "type": "normal"
+        },
+        {
+          "nom": "Hôtel de Ville",
+          "type": "normal"
+        },
+        {
+          "nom": "Route de la Citadelle",
+          "type": "normal"
+        },
+        {
+          "nom": "Pôle d",
+          "type": "normal"
+        },
+        {
+          "nom": "Gare Routière",
+          "type": "terminus"
+        },
+        {
+          "nom": "Place Rihour",
+          "type": "normal"
+        },
+        {
+          "nom": "Palais de Justice - Tramway",
+          "type": "normal"
+        },
+        {
+          "nom": "Rima HASSAN - Tramway",
+          "type": "normal"
+        },
+        {
+          "nom": "La Maladière",
+          "type": "normal"
+        }
+      ]
+    },
+    {
+      "nom": "L1C",
+      "arrets": [
+        {
+          "nom": "Cimetière V.Hugo",
+          "type": "terminus"
+        },
+        {
+          "nom": "Collège George Sand",
+          "type": "normal"
+        },
+        {
+          "nom": "Général De Gaulle",
+          "type": "normal"
+        },
+        {
+          "nom": "Hôtel de Police",
+          "type": "normal"
+        },
+        {
+          "nom": "Hôtel de Ville",
+          "type": "normal"
+        },
+        {
+          "nom": "Route de la Citadelle",
+          "type": "normal"
+        },
+        {
+          "nom": "Pôle d",
+          "type": "normal"
+        },
+        {
+          "nom": "Gare Routière",
+          "type": "depart"
+        },
+        {
+          "nom": "Place Rihour",
+          "type": "normal"
+        },
+        {
+          "nom": "Palais de Justice - Tramway",
+          "type": "normal"
+        },
+        {
+          "nom": "Rima HASSAN - Tramway",
+          "type": "normal"
+        },
+        {
+          "nom": "La Maladière",
+          "type": "normal"
+        }
+      ]
+    },
+    {
+      "nom": "L2G",
+      "arrets": [
+        {
+          "nom": "Cimetière V.Hugo",
+          "type": "normal"
+        },
+        {
+          "nom": "Collège George Sand",
+          "type": "normal"
+        },
+        {
+          "nom": "Général De Gaulle",
+          "type": "normal"
+        },
+        {
+          "nom": "CHU de LILLE",
+          "type": "normal"
+        },
+        {
+          "nom": "Bois Sucré",
+          "type": "normal"
+        },
+        {
+          "nom": "Opéra",
+          "type": "normal"
+        },
+        {
+          "nom": "Pôle d",
+          "type": "depart"
+        },
+        {
+          "nom": "Gare Routière",
+          "type": "terminus"
+        },
+        {
+          "nom": "Place Rihour",
+          "type": "normal"
+        },
+        {
+          "nom": "Palais de Justice",
+          "type": "normal"
+        },
+        {
+          "nom": "Rima HASSAN - Tramway",
+          "type": "normal"
+        }
+      ]
+    },
+    {
+      "nom": "L2P",
+      "arrets": [
+        {
+          "nom": "Cimetière V.Hugo",
+          "type": "normal"
+        },
+        {
+          "nom": "Collège George Sand",
+          "type": "normal"
+        },
+        {
+          "nom": "CHU de LILLE",
+          "type": "normal"
+        },
+        {
+          "nom": "Bois Sucré",
+          "type": "normal"
+        },
+        {
+          "nom": "Opéra",
+          "type": "normal"
+        },
+        {
+          "nom": "Pôle d",
+          "type": "terminus"
+        },
+        {
+          "nom": "Gare Routière",
+          "type": "depart"
+        },
+        {
+          "nom": "Place Rihour",
+          "type": "normal"
+        },
+        {
+          "nom": "Palais de Justice",
+          "type": "normal"
+        },
+        {
+          "nom": "Rima HASSAN - Tramway",
+          "type": "normal"
+        }
+      ]
+    },
+    {
+      "nom": "L3",
+      "arrets": [
+        {
+          "nom": "Monument",
+          "type": "normal"
+        },
+        {
+          "nom": "Valiglou",
+          "type": "normal"
+        },
+        {
+          "nom": "Simon Veil",
+          "type": "normal"
+        },
+        {
+          "nom": "Rigault",
+          "type": "normal"
+        },
+        {
+          "nom": "Pôle d",
+          "type": "depart"
+        },
+        {
+          "nom": "Palais de Justice",
+          "type": "normal"
+        },
+        {
+          "nom": "Palais de Justice - Tramway",
+          "type": "normal"
+        },
+        {
+          "nom": "Rima HASSAN - Tramway",
+          "type": "normal"
+        }
+      ]
+    },
+    {
+      "nom": "L4",
+      "arrets": [
+        {
+          "nom": "Collège George Sand",
+          "type": "normal"
+        },
+        {
+          "nom": "Valiglou",
+          "type": "normal"
+        },
+        {
+          "nom": "Simon Veil",
+          "type": "normal"
+        },
+        {
+          "nom": "Pont de Drilly",
+          "type": "normal"
+        },
+        {
+          "nom": "Pôle d",
+          "type": "terminus"
+        },
+        {
+          "nom": "Gare Routière",
+          "type": "depart"
+        },
+        {
+          "nom": "Palais de Justice - Tramway",
+          "type": "normal"
+        },
+        {
+          "nom": "Rima HASSAN - Tramway",
+          "type": "normal"
+        },
+        {
+          "nom": "4 Pavés",
+          "type": "normal"
+        },
+        {
+          "nom": "Martigue",
+          "type": "normal"
+        },
+        {
+          "nom": "Stade CDG",
+          "type": "normal"
+        }
+      ]
+    },
+    {
+      "nom": "L5M",
+      "arrets": [
+        {
+          "nom": "Hôtel de Police",
+          "type": "normal"
+        },
+        {
+          "nom": "Monument",
+          "type": "terminus"
+        },
+        {
+          "nom": "Hôtel de Ville",
+          "type": "normal"
+        },
+        {
+          "nom": "Pont de Drilly",
+          "type": "normal"
+        },
+        {
+          "nom": "Pôle d",
+          "type": "normal"
+        },
+        {
+          "nom": "Gare Routière",
+          "type": "depart"
+        },
+        {
+          "nom": "Palais de Justice - Tramway",
+          "type": "normal"
+        },
+        {
+          "nom": "Rima HASSAN - Tramway",
+          "type": "normal"
+        },
+        {
+          "nom": "Martigue",
+          "type": "normal"
+        },
+        {
+          "nom": "La Maladière",
+          "type": "normal"
+        }
+      ]
+    },
+    {
+      "nom": "L5G",
+      "arrets": [
+        {
+          "nom": "Hôtel de Police",
+          "type": "normal"
+        },
+        {
+          "nom": "Monument",
+          "type": "depart"
+        },
+        {
+          "nom": "Hôtel de Ville",
+          "type": "normal"
+        },
+        {
+          "nom": "Pont de Drilly",
+          "type": "normal"
+        },
+        {
+          "nom": "Pôle d",
+          "type": "normal"
+        },
+        {
+          "nom": "Gare Routière",
+          "type": "terminus"
+        },
+        {
+          "nom": "Palais de Justice - Tramway",
+          "type": "normal"
+        },
+        {
+          "nom": "Rima HASSAN - Tramway",
+          "type": "normal"
+        },
+        {
+          "nom": "Martigue",
+          "type": "normal"
+        },
+        {
+          "nom": "La Maladière",
+          "type": "normal"
+        }
+      ]
+    },
+    {
+      "nom": "9P",
+      "arrets": [
+        {
+          "nom": "Cimetière V.Hugo",
+          "type": "normal"
+        },
+        {
+          "nom": "CHU de LILLE",
+          "type": "normal"
+        },
+        {
+          "nom": "Hôtel de Ville",
+          "type": "normal"
+        },
+        {
+          "nom": "Bois Sucré",
+          "type": "normal"
+        },
+        {
+          "nom": "Opéra",
+          "type": "normal"
+        },
+        {
+          "nom": "Route de la Citadelle",
+          "type": "normal"
+        },
+        {
+          "nom": "Pont de Drilly",
+          "type": "normal"
+        },
+        {
+          "nom": "Rigault",
+          "type": "normal"
+        },
+        {
+          "nom": "Pôle d",
+          "type": "terminus"
+        },
+        {
+          "nom": "Gare Routière",
+          "type": "depart"
+        }
+      ]
+    },
+    {
+      "nom": "9G",
+      "arrets": [
+        {
+          "nom": "Cimetière V.Hugo",
+          "type": "normal"
+        },
+        {
+          "nom": "CHU de LILLE",
+          "type": "normal"
+        },
+        {
+          "nom": "Hôtel de Ville",
+          "type": "normal"
+        },
+        {
+          "nom": "Bois Sucré",
+          "type": "normal"
+        },
+        {
+          "nom": "Opéra",
+          "type": "normal"
+        },
+        {
+          "nom": "Route de la Citadelle",
+          "type": "normal"
+        },
+        {
+          "nom": "Pont de Drilly",
+          "type": "normal"
+        },
+        {
+          "nom": "Rigault",
+          "type": "normal"
+        },
+        {
+          "nom": "Pôle d",
+          "type": "depart"
+        },
+        {
+          "nom": "Gare Routière",
+          "type": "terminus"
+        }
+      ]
+    },
+    {
+      "nom": "10P",
+      "arrets": [
+        {
+          "nom": "CHU de LILLE",
+          "type": "normal"
+        },
+        {
+          "nom": "Opéra",
+          "type": "normal"
+        },
+        {
+          "nom": "Pôle d",
+          "type": "terminus"
+        },
+        {
+          "nom": "Gare Routière",
+          "type": "depart"
+        },
+        {
+          "nom": "Place Rihour",
+          "type": "normal"
+        },
+        {
+          "nom": "Palais de Justice",
+          "type": "normal"
+        },
+        {
+          "nom": "Palais de Justice - Tramway",
+          "type": "normal"
+        },
+        {
+          "nom": "Rima HASSAN - Tramway",
+          "type": "normal"
+        },
+        {
+          "nom": "Galerie des Glaces",
+          "type": "normal"
+        },
+        {
+          "nom": "4 Pavés",
+          "type": "normal"
+        }
+      ]
+    },
+    {
+      "nom": "10G",
+      "arrets": [
+        {
+          "nom": "CHU de LILLE",
+          "type": "normal"
+        },
+        {
+          "nom": "Opéra",
+          "type": "normal"
+        },
+        {
+          "nom": "Pôle d",
+          "type": "depart"
+        },
+        {
+          "nom": "Gare Routière",
+          "type": "terminus"
+        },
+        {
+          "nom": "Place Rihour",
+          "type": "normal"
+        },
+        {
+          "nom": "Palais de Justice",
+          "type": "normal"
+        },
+        {
+          "nom": "Palais de Justice - Tramway",
+          "type": "normal"
+        },
+        {
+          "nom": "Rima HASSAN - Tramway",
+          "type": "normal"
+        },
+        {
+          "nom": "Galerie des Glaces",
+          "type": "normal"
+        },
+        {
+          "nom": "4 Pavés",
+          "type": "normal"
+        }
+      ]
+    },
+    {
+      "nom": "13C",
+      "arrets": [
+        {
+          "nom": "Général De Gaulle",
+          "type": "normal"
+        },
+        {
+          "nom": "CHU de LILLE",
+          "type": "normal"
+        },
+        {
+          "nom": "Hôtel de Police",
+          "type": "normal"
+        },
+        {
+          "nom": "Valiglou",
+          "type": "normal"
+        },
+        {
+          "nom": "Hôtel de Ville",
+          "type": "normal"
+        },
+        {
+          "nom": "Route de la Citadelle",
+          "type": "normal"
+        },
+        {
+          "nom": "Gare Routière",
+          "type": "normal"
+        },
+        {
+          "nom": "Rima HASSAN - Tramway",
+          "type": "normal"
+        },
+        {
+          "nom": "Galerie des Glaces",
+          "type": "terminus"
+        },
+        {
+          "nom": "La Maladière",
+          "type": "normal"
+        },
+        {
+          "nom": "Gendarmerie",
+          "type": "depart"
+        }
+      ]
+    },
+    {
+      "nom": "13G",
+      "arrets": [
+        {
+          "nom": "CHU de LILLE",
+          "type": "normal"
+        },
+        {
+          "nom": "Hôtel de Police",
+          "type": "normal"
+        },
+        {
+          "nom": "Valiglou",
+          "type": "normal"
+        },
+        {
+          "nom": "Hôtel de Ville",
+          "type": "normal"
+        },
+        {
+          "nom": "Route de la Citadelle",
+          "type": "normal"
+        },
+        {
+          "nom": "Gare Routière",
+          "type": "normal"
+        },
+        {
+          "nom": "Galerie des Glaces",
+          "type": "depart"
+        },
+        {
+          "nom": "La Maladière",
+          "type": "normal"
+        },
+        {
+          "nom": "Gendarmerie",
+          "type": "terminus"
+        }
+      ]
+    },
+    {
+      "nom": "14G",
+      "arrets": [
+        {
+          "nom": "CHU de LILLE",
+          "type": "normal"
+        },
+        {
+          "nom": "Monument",
+          "type": "normal"
+        },
+        {
+          "nom": "Valiglou",
+          "type": "normal"
+        },
+        {
+          "nom": "Fenelon",
+          "type": "depart"
+        },
+        {
+          "nom": "Bois Sucré",
+          "type": "normal"
+        },
+        {
+          "nom": "Opéra",
+          "type": "normal"
+        },
+        {
+          "nom": "Route de la Citadelle",
+          "type": "normal"
+        },
+        {
+          "nom": "Palais de Justice - Tramway",
+          "type": "normal"
+        },
+        {
+          "nom": "Rima HASSAN - Tramway",
+          "type": "normal"
+        },
+        {
+          "nom": "Galerie des Glaces",
+          "type": "terminus"
+        },
+        {
+          "nom": "4 Pavés",
+          "type": "normal"
+        },
+        {
+          "nom": "La Maladière",
+          "type": "normal"
+        }
+      ]
+    },
+    {
+      "nom": "14F",
+      "arrets": [
+        {
+          "nom": "Général De Gaulle",
+          "type": "normal"
+        },
+        {
+          "nom": "CHU de LILLE",
+          "type": "normal"
+        },
+        {
+          "nom": "Monument",
+          "type": "normal"
+        },
+        {
+          "nom": "Valiglou",
+          "type": "normal"
+        },
+        {
+          "nom": "Fenelon",
+          "type": "terminus"
+        },
+        {
+          "nom": "Bois Sucré",
+          "type": "normal"
+        },
+        {
+          "nom": "Opéra",
+          "type": "normal"
+        },
+        {
+          "nom": "Route de la Citadelle",
+          "type": "normal"
+        },
+        {
+          "nom": "Rigault",
+          "type": "normal"
+        },
+        {
+          "nom": "Place Rihour",
+          "type": "normal"
+        },
+        {
+          "nom": "Palais de Justice - Tramway",
+          "type": "normal"
+        },
+        {
+          "nom": "Rima HASSAN - Tramway",
+          "type": "normal"
+        },
+        {
+          "nom": "Galerie des Glaces",
+          "type": "depart"
+        },
+        {
+          "nom": "4 Pavés",
+          "type": "normal"
+        },
+        {
+          "nom": "La Maladière",
+          "type": "normal"
+        }
+      ]
+    },
+    {
+      "nom": "15C",
+      "arrets": [
+        {
+          "nom": "Collège George Sand",
+          "type": "normal"
+        },
+        {
+          "nom": "CHU de LILLE",
+          "type": "normal"
+        },
+        {
+          "nom": "Bois Sucré",
+          "type": "normal"
+        },
+        {
+          "nom": "Rigault",
+          "type": "normal"
+        },
+        {
+          "nom": "Gare Routière",
+          "type": "depart"
+        },
+        {
+          "nom": "Place Rihour",
+          "type": "normal"
+        },
+        {
+          "nom": "Galerie des Glaces",
+          "type": "terminus"
+        },
+        {
+          "nom": "Stade CDG",
+          "type": "normal"
+        }
+      ]
+    },
+    {
+      "nom": "15G",
+      "arrets": [
+        {
+          "nom": "Collège George Sand",
+          "type": "normal"
+        },
+        {
+          "nom": "Général De Gaulle",
+          "type": "normal"
+        },
+        {
+          "nom": "CHU de LILLE",
+          "type": "normal"
+        },
+        {
+          "nom": "Bois Sucré",
+          "type": "normal"
+        },
+        {
+          "nom": "Rigault",
+          "type": "normal"
+        },
+        {
+          "nom": "Gare Routière",
+          "type": "terminus"
+        },
+        {
+          "nom": "Place Rihour",
+          "type": "normal"
+        },
+        {
+          "nom": "Galerie des Glaces",
+          "type": "depart"
+        },
+        {
+          "nom": "Stade CDG",
+          "type": "normal"
+        }
+      ]
+    },
+    {
+      "nom": "CO1",
+      "arrets": [
+        {
+          "nom": "Cimetière V.Hugo",
+          "type": "normal"
+        },
+        {
+          "nom": "Collège George Sand",
+          "type": "depart"
+        },
+        {
+          "nom": "Général De Gaulle",
+          "type": "normal"
+        },
+        {
+          "nom": "Simon Veil",
+          "type": "normal"
+        },
+        {
+          "nom": "Pont de Drilly",
+          "type": "normal"
+        },
+        {
+          "nom": "Pôle d",
+          "type": "normal"
+        },
+        {
+          "nom": "Gare Routière",
+          "type": "normal"
+        },
+        {
+          "nom": "Place Rihour",
+          "type": "normal"
+        },
+        {
+          "nom": "Galerie des Glaces",
+          "type": "normal"
+        },
+        {
+          "nom": "4 Pavés",
+          "type": "normal"
+        },
+        {
+          "nom": "La Maladière",
+          "type": "normal"
+        }
+      ]
+    },
+    {
+      "nom": "CO2",
+      "arrets": [
+        {
+          "nom": "Monument",
+          "type": "normal"
+        },
+        {
+          "nom": "Valiglou",
+          "type": "normal"
+        },
+        {
+          "nom": "Hôtel de Ville",
+          "type": "normal"
+        },
+        {
+          "nom": "Fenelon",
+          "type": "normal"
+        },
+        {
+          "nom": "Bois Sucré",
+          "type": "depart"
+        },
+        {
+          "nom": "Simon Veil",
+          "type": "normal"
+        },
+        {
+          "nom": "Rigault",
+          "type": "normal"
+        },
+        {
+          "nom": "Rima HASSAN - Tramway",
+          "type": "normal"
+        },
+        {
+          "nom": "Martigue",
+          "type": "normal"
+        },
+        {
+          "nom": "La Maladière",
+          "type": "normal"
+        },
+        {
+          "nom": "Stade CDG",
+          "type": "normal"
+        },
+        {
+          "nom": "Gendarmerie",
+          "type": "normal"
+        }
+      ]
+    },
+    {
+      "nom": "NVL",
+      "arrets": [
+        {
+          "nom": "Monument",
+          "type": "normal"
+        },
+        {
+          "nom": "Hôtel de Ville",
+          "type": "normal"
+        },
+        {
+          "nom": "Bois Sucré",
+          "type": "depart"
+        },
+        {
+          "nom": "Opéra",
+          "type": "normal"
+        },
+        {
+          "nom": "Simon Veil",
+          "type": "normal"
+        },
+        {
+          "nom": "Rima HASSAN - Tramway",
+          "type": "normal"
+        }
+      ]
+    },
+    {
+      "nom": "CITL",
+      "arrets": [
+        {
+          "nom": "Hôtel de Ville",
+          "type": "normal"
+        },
+        {
+          "nom": "Salle des Fêtes",
+          "type": "normal"
+        },
+        {
+          "nom": "Simon Veil",
+          "type": "normal"
+        },
+        {
+          "nom": "Place Rihour",
+          "type": "depart"
+        },
+        {
+          "nom": "Palais de Justice",
+          "type": "normal"
+        },
+        {
+          "nom": "Rima HASSAN - Tramway",
+          "type": "normal"
+        },
+        {
+          "nom": "Martigue",
+          "type": "normal"
+        },
+        {
+          "nom": "La Maladière",
+          "type": "normal"
+        }
+      ]
+    },
+    {
+      "nom": "N1",
+      "arrets": [
+        {
+          "nom": "Cimetière V.Hugo",
+          "type": "normal"
+        },
+        {
+          "nom": "Collège George Sand",
+          "type": "normal"
+        },
+        {
+          "nom": "Général De Gaulle",
+          "type": "normal"
+        },
+        {
+          "nom": "Hôtel de Ville",
+          "type": "normal"
+        },
+        {
+          "nom": "Bois Sucré",
+          "type": "normal"
+        },
+        {
+          "nom": "Simon Veil",
+          "type": "normal"
+        },
+        {
+          "nom": "Route de la Citadelle",
+          "type": "normal"
+        },
+        {
+          "nom": "Pont de Drilly",
+          "type": "normal"
+        },
+        {
+          "nom": "Rigault",
+          "type": "normal"
+        },
+        {
+          "nom": "Gare Routière",
+          "type": "depart"
+        },
+        {
+          "nom": "Palais de Justice",
+          "type": "normal"
+        },
+        {
+          "nom": "Palais de Justice - Tramway",
+          "type": "normal"
+        },
+        {
+          "nom": "4 Pavés",
+          "type": "normal"
+        }
+      ]
+    },
+    {
+      "nom": "870S",
+      "arrets": [
+        {
+          "nom": "Collège George Sand",
+          "type": "terminus"
+        },
+        {
+          "nom": "Valiglou",
+          "type": "normal"
+        },
+        {
+          "nom": "Fenelon",
+          "type": "normal"
+        },
+        {
+          "nom": "Simon Veil",
+          "type": "normal"
+        },
+        {
+          "nom": "Pont de Drilly",
+          "type": "normal"
+        },
+        {
+          "nom": "Rima HASSAN - Tramway",
+          "type": "normal"
+        },
+        {
+          "nom": "La Maladière",
+          "type": "normal"
+        },
+        {
+          "nom": "Stade CDG",
+          "type": "depart"
+        }
+      ]
+    },
+    {
+      "nom": "870C",
+      "arrets": [
+        {
+          "nom": "Collège George Sand",
+          "type": "depart"
+        },
+        {
+          "nom": "CHU de LILLE",
+          "type": "normal"
+        },
+        {
+          "nom": "Valiglou",
+          "type": "normal"
+        },
+        {
+          "nom": "Fenelon",
+          "type": "normal"
+        },
+        {
+          "nom": "Simon Veil",
+          "type": "normal"
+        },
+        {
+          "nom": "Pont de Drilly",
+          "type": "normal"
+        },
+        {
+          "nom": "La Maladière",
+          "type": "normal"
+        },
+        {
+          "nom": "Stade CDG",
+          "type": "terminus"
+        }
+      ]
+    },
+    {
+      "nom": "876C",
+      "arrets": [
+        {
+          "nom": "Collège George Sand",
+          "type": "terminus"
+        },
+        {
+          "nom": "Valiglou",
+          "type": "normal"
+        },
+        {
+          "nom": "Hôtel de Ville",
+          "type": "depart"
+        },
+        {
+          "nom": "Simon Veil",
+          "type": "normal"
+        },
+        {
+          "nom": "Route de la Citadelle",
+          "type": "normal"
+        },
+        {
+          "nom": "Place Rihour",
+          "type": "normal"
+        },
+        {
+          "nom": "Martigue",
+          "type": "normal"
+        },
+        {
+          "nom": "La Maladière",
+          "type": "normal"
+        },
+        {
+          "nom": "Stade CDG",
+          "type": "normal"
+        }
+      ]
+    },
+    {
+      "nom": "876H",
+      "arrets": [
+        {
+          "nom": "Collège George Sand",
+          "type": "depart"
+        },
+        {
+          "nom": "Valiglou",
+          "type": "normal"
+        },
+        {
+          "nom": "Hôtel de Ville",
+          "type": "terminus"
+        },
+        {
+          "nom": "Simon Veil",
+          "type": "normal"
+        },
+        {
+          "nom": "Route de la Citadelle",
+          "type": "normal"
+        },
+        {
+          "nom": "Place Rihour",
+          "type": "normal"
+        },
+        {
+          "nom": "Martigue",
+          "type": "normal"
+        },
+        {
+          "nom": "La Maladière",
+          "type": "normal"
+        },
+        {
+          "nom": "Stade CDG",
+          "type": "normal"
+        }
+      ]
+    },
+    {
+      "nom": "880C",
+      "arrets": [
+        {
+          "nom": "Cimetière V.Hugo",
+          "type": "normal"
+        },
+        {
+          "nom": "Collège George Sand",
+          "type": "terminus"
+        },
+        {
+          "nom": "CHU de LILLE",
+          "type": "normal"
+        },
+        {
+          "nom": "Hôtel de Police",
+          "type": "normal"
+        },
+        {
+          "nom": "Monument",
+          "type": "depart"
+        },
+        {
+          "nom": "Valiglou",
+          "type": "normal"
+        },
+        {
+          "nom": "Fenelon",
+          "type": "normal"
+        },
+        {
+          "nom": "Bois Sucré",
+          "type": "normal"
+        },
+        {
+          "nom": "Opéra",
+          "type": "normal"
+        },
+        {
+          "nom": "Simon Veil",
+          "type": "normal"
+        },
+        {
+          "nom": "Route de la Citadelle",
+          "type": "normal"
+        },
+        {
+          "nom": "Galerie des Glaces",
+          "type": "normal"
+        },
+        {
+          "nom": "4 Pavés",
+          "type": "normal"
+        },
+        {
+          "nom": "Martigue",
+          "type": "normal"
+        },
+        {
+          "nom": "La Maladière",
+          "type": "normal"
+        }
+      ]
+    },
+    {
+      "nom": "880M",
+      "arrets": [
+        {
+          "nom": "Cimetière V.Hugo",
+          "type": "normal"
+        },
+        {
+          "nom": "Collège George Sand",
+          "type": "depart"
+        },
+        {
+          "nom": "CHU de LILLE",
+          "type": "normal"
+        },
+        {
+          "nom": "Hôtel de Police",
+          "type": "normal"
+        },
+        {
+          "nom": "Monument",
+          "type": "terminus"
+        },
+        {
+          "nom": "Valiglou",
+          "type": "normal"
+        },
+        {
+          "nom": "Fenelon",
+          "type": "normal"
+        },
+        {
+          "nom": "Bois Sucré",
+          "type": "normal"
+        },
+        {
+          "nom": "Opéra",
+          "type": "normal"
+        },
+        {
+          "nom": "Simon Veil",
+          "type": "normal"
+        },
+        {
+          "nom": "Route de la Citadelle",
+          "type": "normal"
+        },
+        {
+          "nom": "Galerie des Glaces",
+          "type": "normal"
+        },
+        {
+          "nom": "4 Pavés",
+          "type": "normal"
+        },
+        {
+          "nom": "Martigue",
+          "type": "normal"
+        },
+        {
+          "nom": "La Maladière",
+          "type": "normal"
+        }
+      ]
+    },
+    {
+      "nom": "908",
+      "arrets": [
+        {
+          "nom": "Cimetière V.Hugo",
+          "type": "normal"
+        },
+        {
+          "nom": "Collège George Sand",
+          "type": "normal"
+        },
+        {
+          "nom": "CHU de LILLE",
+          "type": "normal"
+        },
+        {
+          "nom": "Valiglou",
+          "type": "normal"
+        },
+        {
+          "nom": "Fenelon",
+          "type": "normal"
+        },
+        {
+          "nom": "Route de la Citadelle",
+          "type": "normal"
+        },
+        {
+          "nom": "Pôle d",
+          "type": "normal"
+        },
+        {
+          "nom": "Gare Routière",
+          "type": "terminus"
+        },
+        {
+          "nom": "Galerie des Glaces",
+          "type": "depart"
+        },
+        {
+          "nom": "4 Pavés",
+          "type": "normal"
+        },
+        {
+          "nom": "Martigue",
+          "type": "normal"
+        },
+        {
+          "nom": "La Maladière",
+          "type": "normal"
+        }
+      ]
+    },
+    {
+      "nom": "909",
+      "arrets": [
+        {
+          "nom": "Cimetière V.Hugo",
+          "type": "normal"
+        },
+        {
+          "nom": "Collège George Sand",
+          "type": "normal"
+        },
+        {
+          "nom": "Valiglou",
+          "type": "normal"
+        },
+        {
+          "nom": "Opéra",
+          "type": "normal"
+        },
+        {
+          "nom": "Simon Veil",
+          "type": "depart"
+        },
+        {
+          "nom": "Route de la Citadelle",
+          "type": "normal"
+        },
+        {
+          "nom": "Gare Routière",
+          "type": "normal"
+        },
+        {
+          "nom": "4 Pavés",
+          "type": "terminus"
+        },
+        {
+          "nom": "La Maladière",
+          "type": "normal"
+        }
+      ]
+    },
+    {
+      "nom": "910",
+      "arrets": [
+        {
+          "nom": "Hôtel de Police",
+          "type": "normal"
+        },
+        {
+          "nom": "Valiglou",
+          "type": "normal"
+        },
+        {
+          "nom": "Fenelon",
+          "type": "terminus"
+        },
+        {
+          "nom": "Bois Sucré",
+          "type": "normal"
+        },
+        {
+          "nom": "Simon Veil",
+          "type": "normal"
+        },
+        {
+          "nom": "Pôle d",
+          "type": "depart"
+        },
+        {
+          "nom": "Gare Routière",
+          "type": "normal"
+        },
+        {
+          "nom": "Rima HASSAN - Tramway",
+          "type": "normal"
+        },
+        {
+          "nom": "4 Pavés",
+          "type": "normal"
+        },
+        {
+          "nom": "Martigue",
+          "type": "normal"
+        },
+        {
+          "nom": "La Maladière",
+          "type": "normal"
+        },
+        {
+          "nom": "Gendarmerie",
+          "type": "normal"
+        }
+      ]
+    }
+  ]
+}
