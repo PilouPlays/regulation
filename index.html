@@ -5,8 +5,10 @@
   <title>Gestion des lignes de bus</title>
   <style>
     body { font-family: Arial, sans-serif; margin: 0; background:#f4f6f8; }
-    header { background:#1e88e5; color:white; padding:15px; font-size:22px; }
-    nav { background:#1565c0; padding:10px; }
+    header { background:#1e88e5; color:white; padding:15px; font-size:22px; display:flex; justify-content:space-between; align-items:center; }
+    .login-btn { background:white; border:none; border-radius:20px; padding:8px 15px; cursor:pointer; }
+    .login-btn:hover { background:#e3f2fd; }
+    nav { background:#1565c0; padding:10px; display:none; }
     nav button { background:white; border:none; border-radius:20px; padding:8px 15px; margin-right:10px; cursor:pointer; }
     nav button:hover { background:#e3f2fd; }
     .container { padding:20px; }
@@ -18,25 +20,28 @@
     .delete { background:#e53935; color:white; border:none; border-radius:50%; width:25px; height:25px; cursor:pointer; }
     .delete:hover { background:#c62828; }
     .card { background:white; padding:10px; margin:10px 0; border-radius:10px; box-shadow:0 2px 5px rgba(0,0,0,0.1); display:flex; justify-content:space-between; align-items:center; }
-    .topbar { margin:10px 0; background:#fff; padding:10px; border-radius:10px; }
+    .topbar { margin:10px 0; background:#fff; padding:10px; border-radius:10px; display:none; }
   </style>
 </head>
 <body>
-<header>Gestion des lignes de bus</header>
-<nav>
+<header>
+  <div>Gestion des lignes de bus</div>
+  <button id="loginBtn" class="login-btn" onclick="login()">Se connecter</button>
+</header>
+<nav id="nav">
   <button onclick="showPage('arrets')">Arrêts</button>
   <button onclick="showPage('lignes')">Lignes</button>
   <button onclick="showPage('regulation')">Régulation</button>
 </nav>
 <div class="container">
 
-<div class="topbar">
+<div id="topbar" class="topbar">
   <b>Fichier de données :</b>
   <button onclick="exportFile()">Télécharger les données</button>
   <input type="file" id="fileInput" accept=".json" onchange="importFile(event)" />
 </div>
 
-<div id="arrets" class="page active">
+<div id="arrets" class="page">
   <h2>Créer des arrêts</h2>
   <input id="nomArret" placeholder="Nom de l'arrêt" />
   <button onclick="addArret()">Ajouter</button>
@@ -51,7 +56,7 @@
   <div id="listeLignes"></div>
 </div>
 
-<div id="regulation" class="page">
+<div id="regulation" class="page active">
   <h2>Régulation</h2>
   <ul id="regArrets"></ul>
   <div id="resultReg"></div>
@@ -61,24 +66,34 @@
 <script>
 let arrets = [];
 let lignes = [];
+let isLogged = false;
 
 // Charger les données communes depuis GitHub (bus_data.json)
 fetch("bus_data.json")
   .then(r => r.json())
-  .then(data => {
-    arrets = data.arrets || [];
-    lignes = data.lignes || [];
-    render();
-  })
-  .catch(() => {
-    // Si le fichier n'existe pas encore
-    arrets = [];
-    lignes = [];
-    render();
-  });
+  .then(data => { arrets = data.arrets || []; lignes = data.lignes || []; render(); })
+  .catch(() => { arrets = []; lignes = []; render(); });
+
+function login(){
+  const mdp = prompt("Mot de passe :");
+  if(mdp === "5709"){
+    isLogged = true;
+    document.getElementById('nav').style.display = 'block';
+    document.getElementById('topbar').style.display = 'block';
+    document.getElementById('loginBtn').style.display = 'none';
+    showPage('regulation');
+  } else if(mdp !== null) {
+    alert("Mot de passe incorrect");
+  }
+}
+
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  render();
+}
 
 function save(){
-  // Sauvegarde locale seulement (pour toi)
   localStorage.setItem('arrets',JSON.stringify(arrets));
   localStorage.setItem('lignes',JSON.stringify(lignes));
 }
@@ -100,113 +115,37 @@ function importFile(e){
   if(!file) return;
   const reader = new FileReader();
   reader.onload = ev => {
-    try{
-      const data = JSON.parse(ev.target.result);
-      arrets = data.arrets || [];
-      lignes = data.lignes || [];
-      save(); render();
-    }catch(err){ alert('Fichier invalide'); }
+    try{ const data = JSON.parse(ev.target.result); arrets = data.arrets || []; lignes = data.lignes || []; save(); render(); }
+    catch(err){ alert('Fichier invalide'); }
   };
   reader.readAsText(file);
 }
 
-function showPage(id){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  render();
-}
+function addArret(){ if(!isLogged) return; const nom=document.getElementById('nomArret').value.trim(); if(!nom) return; arrets.push(nom); document.getElementById('nomArret').value=''; save(); render(); }
+function deleteArret(i){ if(!isLogged) return; const nom=arrets[i]; arrets.splice(i,1); lignes.forEach(l=>l.arrets=l.arrets.filter(a=>a.nom!==nom)); save(); render(); }
+function renameArret(i){ if(!isLogged) return; const nouveau = prompt("Nouveau nom de l'arrêt :", arrets[i]); if(!nouveau) return; const ancien = arrets[i]; arrets[i] = nouveau; lignes.forEach(l => l.arrets.forEach(a => { if(a.nom === ancien) a.nom = nouveau; })); save(); render(); }
 
-function addArret(){
-  const nom=document.getElementById('nomArret').value.trim();
-  if(!nom) return;
-  arrets.push(nom);
-  document.getElementById('nomArret').value='';
-  save(); render();
-}
-
-function deleteArret(i){
-  const nom=arrets[i];
-  arrets.splice(i,1);
-  lignes.forEach(l=>l.arrets=l.arrets.filter(a=>a.nom!==nom));
-  save(); render();
-}
-
-function renameArret(i){
-  const nouveau = prompt("Nouveau nom de l'arrêt :", arrets[i]);
-  if(!nouveau) return;
-  const ancien = arrets[i];
-  arrets[i] = nouveau;
-  lignes.forEach(l => l.arrets.forEach(a => { if(a.nom === ancien) a.nom = nouveau; }));
-  save(); render();
-}
-
-function addLigne(){
-  const nom=document.getElementById('nomLigne').value.trim();
-  if(!nom) return;
-  const selected=[];
-  document.querySelectorAll('.chkArret').forEach(chk=>{
-    if(chk.checked) selected.push({nom:chk.value,type:chk.dataset.type});
-  });
-  lignes.push({nom,arrets:selected});
-  document.getElementById('nomLigne').value='';
-  save(); render();
-}
-
-function deleteLigne(i){
-  lignes.splice(i,1);
-  save(); render();
-}
-
-function renameLigne(i){
-  const nouveau = prompt("Nouveau nom de la ligne :", lignes[i].nom);
-  if(!nouveau) return;
-  lignes[i].nom = nouveau;
-  save(); render();
-}
+function addLigne(){ if(!isLogged) return; const nom=document.getElementById('nomLigne').value.trim(); if(!nom) return; const selected=[]; document.querySelectorAll('.chkArret').forEach(chk=>{ if(chk.checked) selected.push({nom:chk.value,type:chk.dataset.type}); }); lignes.push({nom,arrets:selected}); document.getElementById('nomLigne').value=''; save(); render(); }
+function deleteLigne(i){ if(!isLogged) return; lignes.splice(i,1); save(); render(); }
+function renameLigne(i){ if(!isLogged) return; const nouveau = prompt("Nouveau nom de la ligne :", lignes[i].nom); if(!nouveau) return; lignes[i].nom = nouveau; save(); render(); }
 
 function render(){
   const ul=document.getElementById('listeArrets'); ul.innerHTML='';
-  arrets.forEach((a,i)=>{
-    const li=document.createElement('li');
-    li.innerHTML = `${a} <div><button onclick='renameArret(${i})'>Renommer</button> <button class='delete' onclick='deleteArret(${i})'>×</button></div>`;
-    ul.appendChild(li);
-  });
+  arrets.forEach((a,i)=>{ const li=document.createElement('li'); li.innerHTML = `${a} ${isLogged?`<div><button onclick='renameArret(${i})'>Renommer</button> <button class='delete' onclick='deleteArret(${i})'>×</button></div>`:''}`; ul.appendChild(li); });
 
-  const sel=document.getElementById('selectArrets');
-  sel.innerHTML='<h3>Choisir les arrêts</h3>';
-  arrets.forEach(a=>{
-    const d=document.createElement('div');
-    d.innerHTML=`<input type='checkbox' class='chkArret' value='${a}' data-type='normal'> ${a}
-    <select onchange=\"this.previousElementSibling.dataset.type=this.value\">
-      <option value='normal'>Arrêt</option>
-      <option value='depart'>Départ</option>
-      <option value='terminus'>Terminus</option>
-    </select>`;
-    sel.appendChild(d);
-  });
+  const sel=document.getElementById('selectArrets'); sel.innerHTML='<h3>Choisir les arrêts</h3>';
+  arrets.forEach(a=>{ const d=document.createElement('div'); d.innerHTML=`<input type='checkbox' class='chkArret' value='${a}' data-type='normal'> ${a} <select onchange=\"this.previousElementSibling.dataset.type=this.value\"><option value='normal'>Arrêt</option><option value='depart'>Départ</option><option value='terminus'>Terminus</option></select>`; sel.appendChild(d); });
 
   const ll=document.getElementById('listeLignes'); ll.innerHTML='<h3>Lignes créées</h3>';
-  lignes.forEach((l,i)=>{
-    const d=document.createElement('div'); d.className='card';
-    d.innerHTML = `<div><b>${l.nom}</b><br>${l.arrets.map(a=>a.nom+'('+a.type+')').join(' → ')}</div>
-    <div><button onclick='renameLigne(${i})'>Renommer</button> <button class='delete' onclick='deleteLigne(${i})'>×</button></div>`;
-    ll.appendChild(d);
-  });
+  lignes.forEach((l,i)=>{ const d=document.createElement('div'); d.className='card'; d.innerHTML = `<div><b>${l.nom}</b><br>${l.arrets.map(a=>a.nom+'('+a.type+')').join(' → ')}</div> ${isLogged?`<div><button onclick='renameLigne(${i})'>Renommer</button> <button class='delete' onclick='deleteLigne(${i})'>×</button></div>`:''}`; ll.appendChild(d); });
 
-  const ra=document.getElementById('regArrets'); ra.innerHTML='';
-  arrets.forEach(a=>{
-    const li=document.createElement('li');
-    li.innerHTML=`<button onclick=\"showLinesAt('${a}')\">${a}</button>`;
-    ra.appendChild(li);
-  });
+  const ra=document.getElementById('regArrets'); ra.innerHTML=''; arrets.forEach(a=>{ const li=document.createElement('li'); li.innerHTML=`<button onclick=\"showLinesAt('${a}')\">${a}</button>`; ra.appendChild(li); });
 }
 
-function showLinesAt(arret){
-  const div=document.getElementById('resultReg');
-  const res=lignes.filter(l=>l.arrets.some(a=>a.nom===arret));
-  div.innerHTML=`<h3>Lignes à ${arret}</h3>`+(res.length?'<ul>'+res.map(l=>`<li>${l.nom}</li>`).join('')+'</ul>':'Aucune ligne');
-}
+function showLinesAt(arret){ const div=document.getElementById('resultReg'); const res=lignes.filter(l=>l.arrets.some(a=>a.nom===arret)); div.innerHTML=`<h3>Lignes à ${arret}</h3>`+(res.length?'<ul>'+res.map(l=>`<li>${l.nom}</li>`).join('')+'</ul>':'Aucune ligne'); }
 
+// Démarrage : page Régulation uniquement, sans onglets ni barre de téléchargement
+showPage('regulation');
 </script>
 </body>
 </html>
